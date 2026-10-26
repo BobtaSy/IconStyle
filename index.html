@@ -1,0 +1,1876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FolderCraft Pro — 10 Style Color Folder Icon Studio</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(22, 28, 45, 0.7);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-hover: rgba(30, 41, 68, 0.85);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.25);
+      --panel-bg: rgba(15, 23, 42, 0.85);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 10%, rgba(56, 189, 248, 0.12), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(168, 85, 247, 0.12), transparent 30%),
+        radial-gradient(circle at 50% 80%, rgba(244, 63, 94, 0.08), transparent 40%);
+      background-attachment: fixed;
+    }
+
+    header {
+      padding: 48px 24px 32px;
+      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 9999px;
+      color: #38bdf8;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 14px;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      max-width: 720px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
+    }
+
+    .quick-stats {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .stat-chip {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      backdrop-filter: blur(10px);
+    }
+
+    .stat-chip strong {
+      color: #38bdf8;
+      font-size: 1.25rem;
+    }
+
+    .stat-chip span {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* Studio Controls Area */
+    .controls-container {
+      position: sticky;
+      top: 16px;
+      z-index: 100;
+      max-width: 1320px;
+      margin: 0 auto 36px;
+      padding: 0 20px;
+    }
+
+    .controls-panel {
+      background: var(--panel-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 18px 24px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .control-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* Style Filter Pills */
+    .filter-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .pill-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .pill-btn.active {
+      background: #0284c7;
+      color: #ffffff;
+      border-color: #38bdf8;
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
+    }
+
+    /* Color Swatches */
+    .color-swatches {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .color-swatch {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .color-swatch:hover {
+      transform: scale(1.15);
+    }
+
+    .color-swatch.active {
+      border-color: #ffffff;
+      box-shadow: 0 0 12px currentColor;
+      transform: scale(1.18);
+    }
+
+    .custom-color-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      padding: 4px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .custom-color-input {
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      left: 0;
+      top: 0;
+    }
+
+    .custom-color-circle {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);
+    }
+
+    .custom-color-hex {
+      font-size: 0.8rem;
+      font-family: monospace;
+      color: var(--text-muted);
+    }
+
+    /* Search & Scale controls */
+    .search-input {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--card-border);
+      color: #ffffff;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      outline: none;
+      width: 180px;
+      transition: all 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+      width: 220px;
+    }
+
+    .slider-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .slider-wrapper input[type="range"] {
+      accent-color: #38bdf8;
+      cursor: pointer;
+      width: 90px;
+    }
+
+    /* View Mode Tabs */
+    .view-tabs {
+      display: flex;
+      gap: 4px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 4px;
+      border-radius: 10px;
+    }
+
+    .view-tab {
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .view-tab.active {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    /* Style Section */
+    .style-section {
+      margin-bottom: 50px;
+    }
+
+    .style-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 14px;
+      margin-bottom: 24px;
+    }
+
+    .style-title-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .style-number {
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 6px;
+      color: #38bdf8;
+    }
+
+    .style-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .style-desc {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-left: 10px;
+    }
+
+    /* Grid of Icons */
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .icon-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 20px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      backdrop-filter: blur(12px);
+      cursor: pointer;
+    }
+
+    .icon-card:hover {
+      background: var(--card-hover);
+      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.45), 0 0 20px rgba(56, 189, 248, 0.15);
+    }
+
+    .icon-preview-box {
+      width: 100%;
+      height: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-bottom: 12px;
+    }
+
+    .icon-preview-box svg {
+      width: 104px;
+      height: 104px;
+      transition: transform 0.25s ease;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+    }
+
+    .icon-card:hover .icon-preview-box svg {
+      transform: scale(1.08);
+    }
+
+    .icon-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #f8fafc;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+    }
+
+    .icon-category {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Card Actions (Hover Overlay) */
+    .card-actions-primary {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .action-ico-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff !important;
+      border: 1px solid #38bdf8 !important;
+      padding: 7px 10px !important;
+      font-size: 0.78rem !important;
+      font-weight: 700 !important;
+      border-radius: 9px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .action-ico-btn:hover {
+      background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%) !important;
+      box-shadow: 0 6px 18px rgba(56, 189, 248, 0.5) !important;
+      transform: translateY(-1px);
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 6px;
+      margin-top: 6px;
+      width: 100%;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+
+    .icon-card:hover .card-actions {
+      opacity: 1;
+    }
+
+    .action-btn {
+      flex: 1;
+      padding: 5px 4px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .action-btn:hover {
+      background: #0284c7;
+      border-color: #38bdf8;
+      color: #ffffff;
+    }
+
+    /* Comparison Matrix Table */
+    .matrix-container {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 24px;
+      backdrop-filter: blur(14px);
+      overflow-x: auto;
+    }
+
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 900px;
+    }
+
+    .matrix-table th {
+      padding: 14px 16px;
+      text-align: center;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #38bdf8;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .matrix-table td {
+      padding: 18px 14px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .matrix-table tr:hover td {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .matrix-icon-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .matrix-icon-cell svg {
+      width: 64px;
+      height: 64px;
+      transition: transform 0.2s;
+    }
+
+    .matrix-icon-cell:hover svg {
+      transform: scale(1.15);
+    }
+
+    .matrix-row-title {
+      text-align: left !important;
+      font-weight: 600;
+      color: #f8fafc;
+      font-size: 0.95rem;
+      min-width: 140px;
+    }
+
+    /* Windows Guide Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      max-width: 680px;
+      width: 100%;
+      padding: 32px;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 14px;
+    }
+
+    .modal-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .close-modal-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .close-modal-btn:hover {
+      color: #ffffff;
+    }
+
+    .guide-step {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #0284c7;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .step-text h4 {
+      font-size: 0.98rem;
+      color: #f1f5f9;
+      margin-bottom: 4px;
+    }
+
+    .step-text p {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0284c7;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(2, 132, 199, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 2000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+      .controls-row { flex-direction: column; align-items: stretch; }
+      .control-group { justify-content: flex-start; }
+      .search-input { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge-pill">
+      <span>✦</span> Vector Icon Architecture & Design System
+    </div>
+    <h1>FolderCraft Pro</h1>
+    <p class="subtitle">
+      10 distinctive professional icon styles & color themes for folder iconography. Includes 12 specialized category badges, 8 curated palettes, instant SVG/PNG export, and real-time palette customization.
+    </p>
+
+    <div class="quick-stats">
+      <div class="stat-chip">
+        <strong>10</strong>
+        <span>Pro Styles</span>
+      </div>
+      <div class="stat-chip">
+        <strong>12</strong>
+        <span>Category Badges</span>
+      </div>
+      <div class="stat-chip">
+        <strong>200+</strong>
+        <span>Rendered SVGs</span>
+      </div>
+      <div class="stat-chip">
+        <strong>HD 512px</strong>
+        <span>Instant PNG Rasterizer</span>
+      </div>
+      <div class="stat-chip">
+        <button class="pill-btn" onclick="openGuideModal()" style="margin:0; background:rgba(56,189,248,0.15); color:#38bdf8; border-color:#38bdf8;">
+          📖 Windows Folder Setup Guide
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sticky Studio Controls -->
+  <div class="controls-container">
+    <div class="controls-panel">
+      <!-- Top Row: Style filter pills & View Switcher -->
+      <div class="controls-row">
+        <div class="control-group">
+          <span class="control-label">Style:</span>
+          <div class="filter-pills" id="stylePills">
+            <button class="pill-btn active" data-style="all">All 10 Styles</button>
+            <button class="pill-btn" data-style="01-modern-fluent">Fluent</button>
+            <button class="pill-btn" data-style="02-glassmorphism">Glass</button>
+            <button class="pill-btn" data-style="03-claymorphism-3d">3D Clay</button>
+            <button class="pill-btn" data-style="04-cyberpunk-neon">Neon Tech</button>
+            <button class="pill-btn" data-style="05-duotone-pro">Duotone</button>
+            <button class="pill-btn" data-style="06-neumorphism">Soft Emboss</button>
+            <button class="pill-btn" data-style="07-retro-bauhaus">Bauhaus</button>
+            <button class="pill-btn" data-style="08-lineart-tech">Blueprint</button>
+            <button class="pill-btn" data-style="09-luxury-gold-carbon">Gold Carbon</button>
+            <button class="pill-btn" data-style="10-holographic-liquid">Holographic</button>
+          </div>
+        </div>
+
+        <div class="view-tabs">
+          <button class="view-tab active" id="tabGallery" onclick="switchView('gallery')">Gallery Grid</button>
+          <button class="view-tab" id="tabMatrix" onclick="switchView('matrix')">Style Comparison Matrix</button>
+        </div>
+      </div>
+
+      <!-- Second Row: Color Palettes, Custom Color, Search & Size -->
+      <div class="controls-row">
+        <div class="control-group">
+          <span class="control-label">Color:</span>
+          <div class="color-swatches" id="colorSwatches">
+            <!-- Rendered by JS -->
+          </div>
+
+          <!-- Live Custom Color Picker -->
+          <div class="custom-color-wrapper" title="Click to pick any custom HEX color">
+            <input type="color" id="customColorPicker" class="custom-color-input" value="#0284c7">
+            <div class="custom-color-circle" id="customColorCircle"></div>
+            <span class="custom-color-hex" id="customColorText">Custom</span>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Badge:</span>
+          <select id="badgeSelect" class="pill-btn" style="background:rgba(255,255,255,0.08); border-radius:10px; color:#fff; outline:none;">
+            <option value="all">All Badges</option>
+            <option value="default">Default Folder</option>
+            <option value="code">Code / Developer</option>
+            <option value="documents">Documents</option>
+            <option value="images">Images & Media</option>
+            <option value="music">Music & Audio</option>
+            <option value="video">Videos</option>
+            <option value="downloads">Downloads</option>
+            <option value="security">Security & Vault</option>
+            <option value="cloud">Cloud Sync</option>
+            <option value="settings">Settings & Config</option>
+            <option value="favorites">Favorites</option>
+            <option value="users">Team & Users</option>
+          </select>
+
+          <input type="text" id="searchInput" class="search-input" placeholder="Search badge or style...">
+
+          <div class="slider-wrapper">
+            <span>Size:</span>
+            <input type="range" id="sizeSlider" min="72" max="150" value="104">
+            <span id="sizeValue">104px</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Showcase Container -->
+  <main id="mainContainer">
+    <!-- Gallery View -->
+    <div id="galleryView"></div>
+
+    <!-- Matrix Comparison View -->
+    <div id="matrixView" style="display: none;">
+      <div class="matrix-container">
+        <table class="matrix-table" id="matrixTable">
+          <!-- Populated by JS -->
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal for Windows Customization Guide -->
+  <div class="modal-overlay" id="guideModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">How to Apply Custom Colored Icons to Windows Folders</h3>
+        <button class="close-modal-btn" onclick="closeGuideModal()">&times;</button>
+      </div>
+
+      <div class="guide-step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <h4>Download Native Windows .ICO</h4>
+          <p>Click the blue <strong>"Download Windows .ICO"</strong> button on any icon below. It directly downloads a genuine 6-resolution `.ico` file (256px down to 16px) that Windows immediately recognizes! <em>(Or pick from the 200 pre-saved .ico files in your local <code>ico/</code> folder!)</em></p>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <h4>Open Folder Properties</h4>
+          <p>Right-click the folder in Windows File Explorer you want to customize and click <strong>Properties</strong>.</p>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <h4>Select "Change Icon..."</h4>
+          <p>Navigate to the <strong>Customize</strong> tab at the top, and click the <strong>Change Icon...</strong> button at the bottom.</p>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <h4>Browse and Apply</h4>
+          <p>Click <strong>Browse...</strong>, select your `.ico` file, click <strong>OK</strong>, then <strong>Apply</strong>. Your folder now features a bespoke designer icon!</p>
+        </div>
+      </div>
+
+      <div style="text-align: right; margin-top: 24px;">
+        <button class="pill-btn active" style="padding: 10px 24px;" onclick="closeGuideModal()">Got It!</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <span id="toastIcon">✓</span>
+    <span id="toastMsg">SVG Copied to Clipboard!</span>
+  </div>
+
+  <footer>
+    <p>FolderCraft Pro — Crafted with precision vector math & modern UI standards.</p>
+    <p style="margin-top: 6px; font-size: 0.8rem; color: #64748b;">All SVGs are royalty-free, scalable, and fully customizable for personal or commercial projects.</p>
+  </footer>
+
+  <!-- Script Logic -->
+  <script>
+    // 8 Pre-curated Palettes
+    const PALETTES = {
+      blue: {
+        name: 'Sapphire Blue',
+        primary: '#0284c7',
+        primaryLight: '#38bdf8',
+        primaryDark: '#0369a1',
+        accent: '#e0f2fe',
+        glow: '#38bdf8',
+        shadow: 'rgba(2, 132, 199, 0.35)',
+        contrast: '#ffffff'
+      },
+      emerald: {
+        name: 'Emerald Mint',
+        primary: '#059669',
+        primaryLight: '#34d399',
+        primaryDark: '#047857',
+        accent: '#d1fae5',
+        glow: '#34d399',
+        shadow: 'rgba(5, 150, 105, 0.35)',
+        contrast: '#ffffff'
+      },
+      purple: {
+        name: 'Royal Amethyst',
+        primary: '#7c3aed',
+        primaryLight: '#a78bfa',
+        primaryDark: '#6d28d9',
+        accent: '#ede9fe',
+        glow: '#a78bfa',
+        shadow: 'rgba(124, 58, 237, 0.35)',
+        contrast: '#ffffff'
+      },
+      amber: {
+        name: 'Sunset Amber',
+        primary: '#d97706',
+        primaryLight: '#fbbf24',
+        primaryDark: '#b45309',
+        accent: '#fef3c7',
+        glow: '#fbbf24',
+        shadow: 'rgba(217, 119, 6, 0.35)',
+        contrast: '#ffffff'
+      },
+      coral: {
+        name: 'Ruby Coral',
+        primary: '#e11d48',
+        primaryLight: '#fb7185',
+        primaryDark: '#be123c',
+        accent: '#ffe4e6',
+        glow: '#fb7185',
+        shadow: 'rgba(225, 29, 72, 0.35)',
+        contrast: '#ffffff'
+      },
+      cyan: {
+        name: 'Cyber Cyan',
+        primary: '#0891b2',
+        primaryLight: '#22d3ee',
+        primaryDark: '#0e7490',
+        accent: '#cffafe',
+        glow: '#22d3ee',
+        shadow: 'rgba(8, 145, 178, 0.35)',
+        contrast: '#ffffff'
+      },
+      gold: {
+        name: 'Imperial Gold',
+        primary: '#ca8a04',
+        primaryLight: '#facc15',
+        primaryDark: '#a16207',
+        accent: '#fef9c3',
+        glow: '#facc15',
+        shadow: 'rgba(202, 138, 4, 0.35)',
+        contrast: '#1e293b'
+      },
+      graphite: {
+        name: 'Stealth Graphite',
+        primary: '#334155',
+        primaryLight: '#64748b',
+        primaryDark: '#1e293b',
+        accent: '#f1f5f9',
+        glow: '#94a3b8',
+        shadow: 'rgba(30, 41, 59, 0.45)',
+        contrast: '#ffffff'
+      }
+    };
+
+    // 12 Badges definitions
+    const BADGES = {
+      default: {
+        name: 'Default',
+        category: 'Basic',
+        render: (style, color) => ''
+      },
+      code: {
+        name: 'Code / Dev',
+        category: 'Developer',
+        render: (style, color) => `
+          <g transform="translate(64, 79)">
+            <path d="M-13 -6 L-20 0 L-13 6" fill="none" stroke="${color.contrast}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M13 -6 L20 0 L13 6" fill="none" stroke="${color.contrast}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M-4 9 L4 -9" fill="none" stroke="${color.contrast}" stroke-width="2.2" stroke-linecap="round"/>
+          </g>`
+      },
+      documents: {
+        name: 'Documents',
+        category: 'Productivity',
+        render: (style, color) => `
+          <g transform="translate(64, 79)">
+            <path d="M-12 -14 L4 -14 L12 -6 L12 14 L-12 14 Z" fill="${color.contrast}" fill-opacity="0.18" stroke="${color.contrast}" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M4 -14 L4 -6 L12 -6" fill="none" stroke="${color.contrast}" stroke-width="2" stroke-linejoin="round"/>
+            <line x1="-7" y1="-2" x2="7" y2="-2" stroke="${color.contrast}" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="-7" y1="3" x2="7" y2="3" stroke="${color.contrast}" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="-7" y1="8" x2="3" y2="8" stroke="${color.contrast}" stroke-width="1.8" stroke-linecap="round"/>
+          </g>`
+      },
+      images: {
+        name: 'Images',
+        category: 'Media',
+        render: (style, color) => `
+          <g transform="translate(64, 79)">
+            <rect x="-15" y="-12" width="30" height="24" rx="3.5" fill="${color.contrast}" fill-opacity="0.15" stroke="${color.contrast}" stroke-width="2"/>
+            <circle cx="-6" cy="-4" r="2.8" fill="${color.contrast}"/>
+            <path d="M-15 7 L-5 -3 L5 7 L9 3 L15 9 L15 9 C15 10.5 13.5 12 12 12 L-12 12 C-13.5 12 -15 10.5 -15 9 Z" fill="${color.contrast}" fill-opacity="0.8"/>
+          </g>`
+      },
+      music: {
+        name: 'Music & Audio',
+        category: 'Media',
+        render: (style, color) => `
+          <g transform="translate(64, 78)">
+            <path d="M-7 4 L-7 -9 C-7 -11 -5 -12 -3 -12 L10 -15 C12 -15 13 -13 13 -11 L13 2" fill="none" stroke="${color.contrast}" stroke-width="2.2" stroke-linecap="round"/>
+            <line x1="-7" y1="-7" x2="13" y2="-10" stroke="${color.contrast}" stroke-width="2.5" stroke-linecap="round"/>
+            <ellipse cx="-10" cy="5" rx="4.5" ry="3.5" transform="rotate(-15 -10 5)" fill="${color.contrast}"/>
+            <ellipse cx="10" cy="3" rx="4.5" ry="3.5" transform="rotate(-15 10 3)" fill="${color.contrast}"/>
+          </g>`
+      },
+      video: {
+        name: 'Videos',
+        category: 'Media',
+        render: (style, color) => `
+          <g transform="translate(64, 79)">
+            <rect x="-15" y="-11" width="30" height="22" rx="4" fill="${color.contrast}" fill-opacity="0.18" stroke="${color.contrast}" stroke-width="2"/>
+            <path d="M-4 -6 L8 0 L-4 6 Z" fill="${color.contrast}"/>
+          </g>`
+      },
+      downloads: {
+        name: 'Downloads',
+        category: 'System',
+        render: (style, color) => `
+          <g transform="translate(64, 79)">
+            <path d="M0 -13 L0 5 M-6 -1 L0 5 L6 -1" fill="none" stroke="${color.contrast}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M-14 3 L-14 11 C-14 12.5 -12.5 13 -11 13 L11 13 C12.5 13 14 12.5 14 11 L14 3" fill="none" stroke="${color.contrast}" stroke-width="2.2" stroke-linecap="round"/>
+          </g>`
+      },
+      security: {
+        name: 'Security Vault',
+        category: 'Security',
+        render: (style, color) => `
+          <g transform="translate(64, 79)">
+            <path d="M0 -14 L12 -9 C12 2 8 10 0 14 C-8 10 -12 2 -12 -9 Z" fill="${color.contrast}" fill-opacity="0.2" stroke="${color.contrast}" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="0" cy="-1" r="2.8" fill="${color.contrast}"/>
+            <path d="M-1.5 -1 L-2.5 6 L2.5 6 L1.5 -1 Z" fill="${color.contrast}"/>
+          </g>`
+      },
+      cloud: {
+        name: 'Cloud Sync',
+        category: 'System',
+        render: (style, color) => `
+          <g transform="translate(64, 79)">
+            <path d="M-7 9 L9 9 C12.5 9 15 6.5 15 3.5 C15 0.8 13 -1.2 10.5 -1.4 C10.2 -5.5 6.8 -8.5 2.5 -8.5 C-1.2 -8.5 -4.3 -6.3 -5.2 -3 C-5.8 -3.3 -6.5 -3.5 -7.2 -3.5 C-10.5 -3.5 -13 -0.8 -13 2.5 C-13 6 -10.2 9 -7 9 Z" 
+              fill="${color.contrast}" fill-opacity="0.22" stroke="${color.contrast}" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M-2 4 L0 1 L2 4" fill="none" stroke="${color.contrast}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M0 1 L0 7" fill="none" stroke="${color.contrast}" stroke-width="1.8" stroke-linecap="round"/>
+          </g>`
+      },
+      settings: {
+        name: 'Settings',
+        category: 'System',
+        render: (style, color) => `
+          <g transform="translate(64, 79)">
+            <path d="M-4 -14 L4 -14 L5 -10 L9 -8 L13 -10 L17 -5 L14 -1 L14 4 L17 8 L13 13 L9 11 L5 13 L4 17 L-4 17 L-5 13 L-9 11 L-13 13 L-17 8 L-14 4 L-14 -1 L-17 -5 L-13 -10 L-9 -8 L-5 -10 Z"
+              fill="${color.contrast}" fill-opacity="0.2" stroke="${color.contrast}" stroke-width="1.8" stroke-linejoin="round"/>
+            <circle cx="0" cy="1.5" r="4.5" fill="none" stroke="${color.contrast}" stroke-width="2.2"/>
+          </g>`
+      },
+      favorites: {
+        name: 'Favorites',
+        category: 'Personal',
+        render: (style, color) => `
+          <g transform="translate(64, 78)">
+            <path d="M0 -14 L4 -4 L14 -3 L6 4 L9 14 L0 8 L-9 14 L-6 4 L-14 -3 L-4 -4 Z"
+              fill="${color.contrast}" fill-opacity="0.28" stroke="${color.contrast}" stroke-width="2" stroke-linejoin="round"/>
+          </g>`
+      },
+      users: {
+        name: 'Team & Users',
+        category: 'Team',
+        render: (style, color) => `
+          <g transform="translate(64, 79)">
+            <circle cx="6" cy="-6" r="4" fill="${color.contrast}" fill-opacity="0.5"/>
+            <path d="M-1 9 C-1 4 4 2 9 2 C13 2 17 4 17 9" fill="none" stroke="${color.contrast}" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="-5" cy="-3" r="5" fill="${color.contrast}"/>
+            <path d="M-14 12 C-14 7 -9 5 -5 5 C-1 5 4 7 4 12" fill="none" stroke="${color.contrast}" stroke-width="2.2" stroke-linecap="round"/>
+          </g>`
+      }
+    };
+
+    // 10 Distinct Styles Generators
+    const STYLES = [
+      {
+        id: '01-modern-fluent',
+        name: 'Modern Fluent',
+        subtitle: 'Glossy multi-layer gradients with translucent glass highlights',
+        defaultColor: PALETTES.blue,
+        generateSvg: (badgeKey, color, uniqueId) => {
+          const c = color || PALETTES.blue;
+          const uid = uniqueId || 'mf_' + Math.random().toString(36).substr(2, 9);
+          const badgeMarkup = BADGES[badgeKey].render('modern-fluent', c);
+          return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+            <defs>
+              <linearGradient id="${uid}_b" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="${c.primaryLight}"/>
+                <stop offset="100%" stop-color="${c.primaryDark}"/>
+              </linearGradient>
+              <linearGradient id="${uid}_f" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="${c.primaryLight}" stop-opacity="0.95"/>
+                <stop offset="35%" stop-color="${c.primary}"/>
+                <stop offset="100%" stop-color="${c.primaryDark}"/>
+              </linearGradient>
+              <linearGradient id="${uid}_s" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="100%" stop-color="#e2e8f0"/>
+              </linearGradient>
+              <linearGradient id="${uid}_r" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"/>
+                <stop offset="50%" stop-color="#ffffff" stop-opacity="0.2"/>
+                <stop offset="100%" stop-color="#ffffff" stop-opacity="0.6"/>
+              </linearGradient>
+              <filter id="${uid}_sh" x="-15%" y="-15%" width="130%" height="135%">
+                <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="${c.primaryDark}" flood-opacity="0.32"/>
+                <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.12"/>
+              </filter>
+            </defs>
+            <path d="M 18 34 C 18 28 23 24 29 24 L 52 24 C 56 24 60 27 63 31 L 68 37 L 100 37 C 106 37 110 41 110 47 L 110 98 C 110 104 106 108 100 108 L 28 108 C 22 108 18 104 18 98 Z" fill="url(#${uid}_b)"/>
+            <rect x="28" y="34" width="72" height="42" rx="4" fill="url(#${uid}_s)" opacity="0.95"/>
+            <line x1="38" y1="42" x2="62" y2="42" stroke="${c.primaryLight}" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+            <line x1="38" y1="48" x2="78" y2="48" stroke="#94a3b8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+            <g filter="url(#${uid}_sh)">
+              <path d="M 14 54 C 14 49 18 46 23 46 L 55 46 C 59 46 62 48 65 52 L 69 56 L 105 56 C 110 56 114 59 114 64 L 114 97 C 114 103 109 108 103 108 L 25 108 C 19 108 14 103 14 97 Z" fill="url(#${uid}_f)"/>
+              <path d="M 15 54 C 15 50 18 47.5 23 47.5 L 55 47.5 C 58.5 47.5 61.5 49.5 64.5 53.5 L 68.5 57.5 L 105 57.5 C 109.5 57.5 113 60.5 113 65" fill="none" stroke="url(#${uid}_r)" stroke-width="1.4" stroke-linecap="round"/>
+            </g>
+            ${badgeMarkup ? `<circle cx="64" cy="79" r="19" fill="${c.primaryDark}" fill-opacity="0.3"/><circle cx="64" cy="79" r="19" fill="none" stroke="#ffffff" stroke-opacity="0.3" stroke-width="1"/>${badgeMarkup}` : `<rect x="52" y="76" width="24" height="4" rx="2" fill="#ffffff" fill-opacity="0.4"/>`}
+          </svg>`;
+        }
+      },
+      {
+        id: '02-glassmorphism',
+        name: 'Frosted Glassmorphism',
+        subtitle: 'Translucent frosted glass with luminous edge refractions',
+        defaultColor: PALETTES.cyan,
+        generateSvg: (badgeKey, color, uniqueId) => {
+          const c = color || PALETTES.cyan;
+          const uid = uniqueId || 'gm_' + Math.random().toString(36).substr(2, 9);
+          const badgeMarkup = BADGES[badgeKey].render('glassmorphism', c);
+          return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+            <defs>
+              <linearGradient id="${uid}_b" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="${c.primaryDark}" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="${c.primary}" stop-opacity="0.6"/>
+              </linearGradient>
+              <linearGradient id="${uid}_g" x1="10%" y1="0%" x2="90%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.45"/>
+                <stop offset="40%" stop-color="${c.primaryLight}" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#ffffff" stop-opacity="0.1"/>
+              </linearGradient>
+              <linearGradient id="${uid}_bd" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+                <stop offset="45%" stop-color="#ffffff" stop-opacity="0.2"/>
+                <stop offset="100%" stop-color="${c.primaryLight}" stop-opacity="0.6"/>
+              </linearGradient>
+              <linearGradient id="${uid}_sh" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+              </linearGradient>
+              <filter id="${uid}_bl" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="${c.primaryDark}" flood-opacity="0.4"/>
+              </filter>
+            </defs>
+            <circle cx="85" cy="45" r="28" fill="${c.primaryLight}" opacity="0.35" filter="blur(14px)"/>
+            <path d="M 20 34 C 20 28 25 24 31 24 L 52 24 C 56 24 60 27 63 31 L 67 36 L 98 36 C 104 36 108 40 108 46 L 108 96 C 108 102 104 106 98 106 L 30 106 C 24 106 20 102 20 96 Z" fill="url(#${uid}_b)" stroke="url(#${uid}_bd)" stroke-width="1.2"/>
+            <rect x="30" y="32" width="68" height="38" rx="5" fill="#ffffff" fill-opacity="0.25" stroke="#ffffff" stroke-width="1" stroke-opacity="0.4"/>
+            <line x1="40" y1="40" x2="68" y2="40" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-opacity="0.8"/>
+            <g filter="url(#${uid}_bl)">
+              <path d="M 14 52 C 14 47 18 44 23 44 L 54 44 C 58 44 61 46 64 50 L 68 55 L 105 55 C 110 55 114 58 114 63 L 114 96 C 114 102 109 107 103 107 L 25 107 C 19 107 14 102 14 96 Z" fill="url(#${uid}_g)" stroke="url(#${uid}_bd)" stroke-width="1.5"/>
+              <path d="M 16 54 L 60 45 L 36 106 L 16 102 Z" fill="url(#${uid}_sh)" opacity="0.35"/>
+            </g>
+            ${badgeMarkup ? `<circle cx="64" cy="79" r="19" fill="#ffffff" fill-opacity="0.18" stroke="url(#${uid}_bd)" stroke-width="1.4"/>${badgeMarkup}` : `<circle cx="64" cy="78" r="7" fill="#ffffff" fill-opacity="0.3" stroke="#ffffff" stroke-width="1" stroke-opacity="0.6"/>`}
+          </svg>`;
+        }
+      },
+      {
+        id: '03-claymorphism-3d',
+        name: '3D Claymorphism',
+        subtitle: 'Chunky tactile matte 3D clay with dual volumetric lighting',
+        defaultColor: PALETTES.coral,
+        generateSvg: (badgeKey, color, uniqueId) => {
+          const c = color || PALETTES.coral;
+          const uid = uniqueId || 'cm_' + Math.random().toString(36).substr(2, 9);
+          const badgeMarkup = BADGES[badgeKey].render('claymorphism-3d', c);
+          return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+            <defs>
+              <linearGradient id="${uid}_b" x1="20%" y1="0%" x2="80%" y2="100%">
+                <stop offset="0%" stop-color="${c.primaryLight}"/>
+                <stop offset="100%" stop-color="${c.primaryDark}"/>
+              </linearGradient>
+              <linearGradient id="${uid}_f" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="${c.primaryLight}"/>
+                <stop offset="40%" stop-color="${c.primary}"/>
+                <stop offset="100%" stop-color="${c.primaryDark}"/>
+              </linearGradient>
+              <linearGradient id="${uid}_h" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.75"/>
+                <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+              </linearGradient>
+              <filter id="${uid}_sh" x="-20%" y="-15%" width="140%" height="145%">
+                <feDropShadow dx="0" dy="10" stdDeviation="7" flood-color="${c.primaryDark}" flood-opacity="0.45"/>
+              </filter>
+            </defs>
+            <path d="M 22 36 C 22 28 28 23 36 23 L 52 23 C 57 23 62 26 65 30 L 68 34 L 94 34 C 103 34 109 29 109 38 L 108 94 C 108 103 101 110 92 110 L 36 110 C 27 110 20 103 20 94 Z" fill="url(#${uid}_b)"/>
+            <rect x="29" y="32" width="70" height="44" rx="8" fill="#ffffff" filter="drop-shadow(0 3px 4px rgba(0,0,0,0.15))"/>
+            <rect x="38" y="39" width="30" height="4" rx="2" fill="${c.primaryLight}" opacity="0.7"/>
+            <g filter="url(#${uid}_sh)">
+              <rect x="14" y="50" width="100" height="58" rx="18" fill="url(#${uid}_f)"/>
+              <path d="M 24 53 Q 64 50 104 53" stroke="url(#${uid}_h)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            </g>
+            ${badgeMarkup ? `<rect x="44" y="59" width="40" height="40" rx="14" fill="${c.primaryDark}"/><rect x="44" y="59" width="40" height="40" rx="14" fill="url(#${uid}_h)" opacity="0.3"/>${badgeMarkup}` : `<rect x="52" y="74" width="24" height="10" rx="5" fill="#ffffff" opacity="0.6"/>`}
+          </svg>`;
+        }
+      },
+      {
+        id: '04-cyberpunk-neon',
+        name: 'Cyberpunk Neon Tech',
+        subtitle: 'Dark stealth chassis with radiant laser wireframes and circuits',
+        defaultColor: PALETTES.cyan,
+        generateSvg: (badgeKey, color, uniqueId) => {
+          const c = color || PALETTES.cyan;
+          const uid = uniqueId || 'cp_' + Math.random().toString(36).substr(2, 9);
+          const neonColor = c.primaryLight;
+          const badgeMarkup = BADGES[badgeKey].render('cyberpunk-neon', { contrast: neonColor });
+          return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+            <defs>
+              <linearGradient id="${uid}_c" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0f172a"/>
+                <stop offset="50%" stop-color="#090d16"/>
+                <stop offset="100%" stop-color="#030712"/>
+              </linearGradient>
+              <filter id="${uid}_g">
+                <feDropShadow dx="0" dy="0" stdDeviation="4.5" flood-color="${neonColor}" flood-opacity="0.85"/>
+              </filter>
+            </defs>
+            <path d="M 24 16 L 36 28 M 104 16 L 92 28 M 10 70 H 118" stroke="#1e293b" stroke-width="1" stroke-dasharray="2 3"/>
+            <path d="M 20 38 L 20 28 L 32 24 L 54 24 L 62 32 L 102 32 L 108 38 L 108 98 L 100 106 L 28 106 L 20 98 Z" fill="url(#${uid}_c)" stroke="${neonColor}" stroke-width="1.2" stroke-opacity="0.5"/>
+            <path d="M 28 36 L 100 36 L 100 56 L 28 56 Z" fill="#020617" stroke="#334155" stroke-width="1"/>
+            <line x1="36" y1="44" x2="68" y2="44" stroke="${neonColor}" stroke-width="1.8" opacity="0.8"/>
+            <circle cx="84" cy="44" r="2.5" fill="#f43f5e"/>
+            <circle cx="92" cy="44" r="2.5" fill="${neonColor}"/>
+            <path d="M 14 56 L 24 46 L 56 46 L 62 52 L 100 52 L 114 66 L 114 98 L 106 108 L 22 108 L 14 100 Z" fill="url(#${uid}_c)" stroke="${neonColor}" stroke-width="2" filter="url(#${uid}_g)"/>
+            <path d="M 20 54 L 16 54 L 16 58" fill="none" stroke="#f43f5e" stroke-width="2"/>
+            ${badgeMarkup ? `<circle cx="64" cy="79" r="18" fill="#030712" stroke="${neonColor}" stroke-width="1.8" filter="url(#${uid}_g)"/>${badgeMarkup}` : `<polygon points="64,68 74,79 64,90 54,79" fill="none" stroke="${neonColor}" stroke-width="2" filter="url(#${uid}_g)"/><circle cx="64" cy="79" r="3" fill="#f43f5e"/>`}
+          </svg>`;
+        }
+      },
+      {
+        id: '05-duotone-pro',
+        name: 'Duotone Minimal Pro',
+        subtitle: 'Ultra-crisp 2-tone vector geometry for SaaS & Figma design systems',
+        defaultColor: PALETTES.purple,
+        generateSvg: (badgeKey, color, uniqueId) => {
+          const c = color || PALETTES.purple;
+          const badgeMarkup = BADGES[badgeKey].render('duotone-pro', { contrast: c.primary });
+          return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+            <path d="M 18 36 C 18 30 22 26 28 26 L 50 26 C 54 26 58 29 61 33 L 66 39 L 100 39 C 106 39 110 43 110 49 L 110 98 C 110 104 106 108 100 108 L 28 108 C 22 108 18 104 18 98 Z" fill="${c.primary}" fill-opacity="0.18"/>
+            <rect x="28" y="34" width="72" height="42" rx="4" fill="#ffffff" stroke="${c.primary}" stroke-width="1.5" stroke-opacity="0.3"/>
+            <line x1="38" y1="43" x2="65" y2="43" stroke="${c.primary}" stroke-width="2" stroke-linecap="round" stroke-opacity="0.4"/>
+            <path d="M 14 54 C 14 48 18 45 24 45 L 54 45 C 58 45 62 48 65 52 L 69 57 L 104 57 C 110 57 114 61 114 67 L 114 97 C 114 103 110 108 104 108 L 24 108 C 18 108 14 103 14 97 Z" fill="${c.primary}" fill-opacity="0.9"/>
+            ${badgeMarkup ? `<circle cx="64" cy="80" r="18" fill="#ffffff"/>${badgeMarkup}` : `<path d="M 52 80 L 76 80" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>`}
+          </svg>`;
+        }
+      },
+      {
+        id: '06-neumorphism',
+        name: 'Neumorphic Soft Emboss',
+        subtitle: 'Dual-directional cast shadows with tactile pressed surfaces',
+        defaultColor: PALETTES.graphite,
+        generateSvg: (badgeKey, color, uniqueId) => {
+          const c = color || PALETTES.graphite;
+          const uid = uniqueId || 'neu_' + Math.random().toString(36).substr(2, 9);
+          const baseBg = '#e2e8f0';
+          const badgeMarkup = BADGES[badgeKey].render('neumorphism', { contrast: '#475569' });
+          return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+            <defs>
+              <filter id="${uid}_ex" x="-25%" y="-25%" width="150%" height="150%">
+                <feDropShadow dx="6" dy="6" stdDeviation="6" flood-color="#94a3b8" flood-opacity="0.6"/>
+                <feDropShadow dx="-5" dy="-5" stdDeviation="6" flood-color="#ffffff" flood-opacity="0.95"/>
+              </filter>
+              <filter id="${uid}_in">
+                <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="#94a3b8" flood-opacity="0.5"/>
+                <feDropShadow dx="-2" dy="-2" stdDeviation="2" flood-color="#ffffff" flood-opacity="0.8"/>
+              </filter>
+            </defs>
+            <rect x="0" y="0" width="128" height="128" rx="16" fill="${baseBg}"/>
+            <path d="M 20 36 C 20 30 24 26 30 26 L 50 26 C 54 26 57 28 60 32 L 64 37 L 98 37 C 104 37 108 41 108 47 L 108 96 C 108 102 104 106 98 106 L 30 106 C 24 106 20 102 20 96 Z" fill="${baseBg}" filter="url(#${uid}_ex)"/>
+            <rect x="30" y="34" width="68" height="38" rx="4" fill="#f8fafc" opacity="0.9"/>
+            <path d="M 14 54 C 14 49 18 46 23 46 L 54 46 C 57 46 61 48 63 52 L 67 56 L 105 56 C 110 56 114 60 114 65 L 114 96 C 114 102 110 107 104 107 L 24 107 C 18 107 14 102 14 96 Z" fill="${baseBg}" filter="url(#${uid}_ex)"/>
+            ${badgeMarkup ? `<circle cx="64" cy="79" r="18" fill="${baseBg}" filter="url(#${uid}_in)"/>${badgeMarkup}` : `<rect x="50" y="77" width="28" height="6" rx="3" fill="${baseBg}" filter="url(#${uid}_in)"/>`}
+          </svg>`;
+        }
+      },
+      {
+        id: '07-retro-bauhaus',
+        name: 'Retro Bauhaus Bold',
+        subtitle: 'High-contrast heavy contours with solid offset hard shadows',
+        defaultColor: PALETTES.amber,
+        generateSvg: (badgeKey, color, uniqueId) => {
+          const c = color || PALETTES.amber;
+          const strokeColor = '#09090b';
+          const badgeMarkup = BADGES[badgeKey].render('retro-bauhaus', { contrast: '#ffffff' });
+          return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+            <path d="M 26 40 L 58 40 L 64 46 L 108 46 L 108 108 L 26 108 Z" fill="${strokeColor}"/>
+            <path d="M 20 34 L 52 34 L 58 40 L 102 40 L 102 102 L 20 102 Z" fill="#facc15" stroke="${strokeColor}" stroke-width="3.5" stroke-linejoin="round"/>
+            <rect x="30" y="24" width="62" height="34" fill="#ffffff" stroke="${strokeColor}" stroke-width="3"/>
+            <line x1="38" y1="32" x2="60" y2="32" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+            <path d="M 14 52 L 54 52 L 60 58 L 108 58 L 108 102 L 14 102 Z" fill="${c.primary}" stroke="${strokeColor}" stroke-width="3.5" stroke-linejoin="round"/>
+            ${badgeMarkup ? `<circle cx="67" cy="82" r="18" fill="${strokeColor}"/><circle cx="64" cy="79" r="18" fill="#2563eb" stroke="${strokeColor}" stroke-width="3"/>${badgeMarkup}` : `<circle cx="64" cy="79" r="8" fill="#ffffff" stroke="${strokeColor}" stroke-width="3"/>`}
+          </svg>`;
+        }
+      },
+      {
+        id: '08-lineart-tech',
+        name: 'Line Art Tech Blueprint',
+        subtitle: 'Precision 2px monoline drafting with blueprint accents',
+        defaultColor: PALETTES.cyan,
+        generateSvg: (badgeKey, color, uniqueId) => {
+          const c = color || PALETTES.cyan;
+          const uid = uniqueId || 'bp_' + Math.random().toString(36).substr(2, 9);
+          const strokeColor = '#0284c7';
+          const badgeMarkup = BADGES[badgeKey].render('lineart-tech', { contrast: strokeColor });
+          return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+            <defs>
+              <pattern id="${uid}_gr" width="8" height="8" patternUnits="userSpaceOnUse">
+                <path d="M 8 0 L 0 0 0 8" fill="none" stroke="${strokeColor}" stroke-width="0.5" stroke-opacity="0.18"/>
+              </pattern>
+            </defs>
+            <path d="M 10 14 H 18 M 14 10 V 18 M 110 14 H 118 M 114 10 V 18" stroke="${strokeColor}" stroke-width="1.2" stroke-opacity="0.5"/>
+            <path d="M 20 34 C 20 28 24 24 30 24 L 50 24 C 54 24 57 26 60 30 L 64 36 L 98 36 C 104 36 108 40 108 46 L 108 96 C 108 102 104 106 98 106 L 30 106 C 24 106 20 102 20 96 Z" fill="url(#${uid}_gr)" stroke="${strokeColor}" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="28" y="32" width="70" height="36" rx="4" fill="#ffffff" fill-opacity="0.8" stroke="${strokeColor}" stroke-width="1.8" stroke-dasharray="4 2"/>
+            <path d="M 14 54 C 14 49 18 46 23 46 L 54 46 C 57 46 61 48 63 52 L 67 56 L 105 56 C 110 56 114 60 114 65 L 114 96 C 114 102 110 107 104 107 L 24 107 C 18 107 14 102 14 96 Z" fill="${c.primaryLight}" fill-opacity="0.12" stroke="${strokeColor}" stroke-width="2.2" stroke-linejoin="round"/>
+            ${badgeMarkup ? `<circle cx="64" cy="79" r="19" fill="#ffffff" stroke="${strokeColor}" stroke-width="2"/><circle cx="64" cy="79" r="22" fill="none" stroke="${strokeColor}" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>${badgeMarkup}` : `<circle cx="64" cy="79" r="6" fill="none" stroke="${strokeColor}" stroke-width="2"/><line x1="54" y1="79" x2="74" y2="79" stroke="${strokeColor}" stroke-width="1.5"/><line x1="64" y1="69" x2="64" y2="89" stroke="${strokeColor}" stroke-width="1.5"/>`}
+          </svg>`;
+        }
+      },
+      {
+        id: '09-luxury-gold-carbon',
+        name: 'Luxury Gold & Carbon',
+        subtitle: 'Brushed titanium chassis with 24K polished gold foil accents',
+        defaultColor: PALETTES.gold,
+        generateSvg: (badgeKey, color, uniqueId) => {
+          const c = color || PALETTES.gold;
+          const uid = uniqueId || 'lux_' + Math.random().toString(36).substr(2, 9);
+          const badgeMarkup = BADGES[badgeKey].render('luxury-gold-carbon', { contrast: '#fef08a' });
+          return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+            <defs>
+              <linearGradient id="${uid}_gd" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#bf953f"/>
+                <stop offset="25%" stop-color="#fcf6ba"/>
+                <stop offset="50%" stop-color="#b38728"/>
+                <stop offset="75%" stop-color="#fbf5b7"/>
+                <stop offset="100%" stop-color="#aa771c"/>
+              </linearGradient>
+              <linearGradient id="${uid}_cb" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#27272a"/>
+                <stop offset="50%" stop-color="#18181b"/>
+                <stop offset="100%" stop-color="#09090b"/>
+              </linearGradient>
+              <filter id="${uid}_gw">
+                <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#ca8a04" flood-opacity="0.5"/>
+              </filter>
+            </defs>
+            <path d="M 20 34 C 20 28 24 24 30 24 L 52 24 C 56 24 60 27 63 31 L 67 36 L 98 36 C 104 36 108 40 108 46 L 108 96 C 108 102 104 106 98 106 L 30 106 C 24 106 20 102 20 96 Z" fill="url(#${uid}_cb)" stroke="url(#${uid}_gd)" stroke-width="1.4"/>
+            <rect x="29" y="32" width="70" height="40" rx="4" fill="#1c1917" stroke="url(#${uid}_gd)" stroke-width="1"/>
+            <line x1="38" y1="41" x2="68" y2="41" stroke="url(#${uid}_gd)" stroke-width="1.8"/>
+            <g filter="url(#${uid}_gw)">
+              <path d="M 14 54 C 14 49 18 46 23 46 L 54 46 C 57 46 61 48 63 52 L 67 56 L 105 56 C 110 56 114 60 114 65 L 114 96 C 114 102 110 107 104 107 L 24 107 C 18 107 14 102 14 96 Z" fill="url(#${uid}_cb)" stroke="url(#${uid}_gd)" stroke-width="2"/>
+              <path d="M 18 56 L 53 56 L 57 60 L 108 60" fill="none" stroke="url(#${uid}_gd)" stroke-width="1" opacity="0.7"/>
+            </g>
+            ${badgeMarkup ? `<circle cx="64" cy="79" r="19" fill="#18181b" stroke="url(#${uid}_gd)" stroke-width="2.2" filter="url(#${uid}_gw)"/><circle cx="64" cy="79" r="16" fill="none" stroke="url(#${uid}_gd)" stroke-width="0.8" stroke-dasharray="2 2"/>${badgeMarkup}` : `<g transform="translate(64, 79)"><path d="M 0 -10 L 3 -3 L 10 0 L 3 3 L 0 10 L -3 3 L -10 0 L -3 -3 Z" fill="url(#${uid}_gd)"/></g>`}
+          </svg>`;
+        }
+      },
+      {
+        id: '10-holographic-liquid',
+        name: 'Holographic Iridescent',
+        subtitle: 'Prismatic liquid spectral gradients with pearlescent reflections',
+        defaultColor: PALETTES.purple,
+        generateSvg: (badgeKey, color, uniqueId) => {
+          const c = color || PALETTES.purple;
+          const uid = uniqueId || 'hl_' + Math.random().toString(36).substr(2, 9);
+          const badgeMarkup = BADGES[badgeKey].render('holographic-liquid', { contrast: '#ffffff' });
+          return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+            <defs>
+              <linearGradient id="${uid}_pm" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#38bdf8"/>
+                <stop offset="28%" stop-color="#a855f7"/>
+                <stop offset="55%" stop-color="#ec4899"/>
+                <stop offset="80%" stop-color="#fbbf24"/>
+                <stop offset="100%" stop-color="#34d399"/>
+              </linearGradient>
+              <linearGradient id="${uid}_sn" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"/>
+                <stop offset="50%" stop-color="#ffffff" stop-opacity="0.1"/>
+                <stop offset="100%" stop-color="#ffffff" stop-opacity="0.7"/>
+              </linearGradient>
+              <filter id="${uid}_gw">
+                <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#a855f7" flood-opacity="0.4"/>
+              </filter>
+            </defs>
+            <path d="M 20 34 C 20 28 24 24 30 24 L 52 24 C 56 24 60 27 63 31 L 67 36 L 98 36 C 104 36 108 40 108 46 L 108 96 C 108 102 104 106 98 106 L 30 106 C 24 106 20 102 20 96 Z" fill="url(#${uid}_pm)" opacity="0.9"/>
+            <rect x="29" y="32" width="70" height="40" rx="5" fill="#ffffff" fill-opacity="0.85" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.1))"/>
+            <g filter="url(#${uid}_gw)">
+              <path d="M 14 54 C 34 44 48 56 68 50 C 88 44 100 56 114 62 L 114 96 C 114 102 110 107 104 107 L 24 107 C 18 107 14 102 14 96 Z" fill="url(#${uid}_pm)"/>
+              <path d="M 24 53 C 44 46 60 55 80 49 C 94 45 106 55 114 62" fill="none" stroke="url(#${uid}_sn)" stroke-width="2"/>
+            </g>
+            ${badgeMarkup ? `<circle cx="64" cy="79" r="19" fill="#ffffff" fill-opacity="0.25" stroke="#ffffff" stroke-width="1.8"/>${badgeMarkup}` : `<circle cx="64" cy="79" r="7" fill="#ffffff" fill-opacity="0.5" stroke="#ffffff" stroke-width="1.5"/>`}
+          </svg>`;
+        }
+      }
+    ];
+
+    // State
+    let activeStyle = 'all';
+    let activeColor = PALETTES.blue;
+    let activeBadge = 'all';
+    let searchQuery = '';
+    let iconSize = 104;
+    let currentView = 'gallery';
+
+    // Initialize UI
+    function init() {
+      renderColorSwatches();
+      attachEvents();
+      renderAll();
+    }
+
+    function renderColorSwatches() {
+      const container = document.getElementById('colorSwatches');
+      container.innerHTML = '';
+      Object.keys(PALETTES).forEach(key => {
+        const pal = PALETTES[key];
+        const swatch = document.createElement('div');
+        swatch.className = `color-swatch ${pal === activeColor ? 'active' : ''}`;
+        swatch.style.backgroundColor = pal.primary;
+        swatch.title = pal.name;
+        swatch.onclick = () => {
+          activeColor = pal;
+          document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+          swatch.classList.add('active');
+          document.getElementById('customColorCircle').style.background = pal.primary;
+          document.getElementById('customColorText').innerText = pal.name.split(' ')[0];
+          renderAll();
+        };
+        container.appendChild(swatch);
+      });
+    }
+
+    function attachEvents() {
+      // Style pills
+      document.querySelectorAll('#stylePills .pill-btn').forEach(btn => {
+        btn.onclick = () => {
+          document.querySelectorAll('#stylePills .pill-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeStyle = btn.dataset.style;
+          renderAll();
+        };
+      });
+
+      // Badge select
+      document.getElementById('badgeSelect').onchange = (e) => {
+        activeBadge = e.target.value;
+        renderAll();
+      };
+
+      // Search input
+      document.getElementById('searchInput').oninput = (e) => {
+        searchQuery = e.target.value.toLowerCase().trim();
+        renderAll();
+      };
+
+      // Size slider
+      const slider = document.getElementById('sizeSlider');
+      const sizeVal = document.getElementById('sizeValue');
+      slider.oninput = (e) => {
+        iconSize = parseInt(e.target.value);
+        sizeVal.innerText = iconSize + 'px';
+        document.querySelectorAll('.icon-preview-box svg').forEach(svg => {
+          svg.style.width = iconSize + 'px';
+          svg.style.height = iconSize + 'px';
+        });
+      };
+
+      // Custom Color Picker
+      const colorPicker = document.getElementById('customColorPicker');
+      colorPicker.oninput = (e) => {
+        const hex = e.target.value;
+        activeColor = {
+          name: 'Custom',
+          primary: hex,
+          primaryLight: lightenHex(hex, 35),
+          primaryDark: darkenHex(hex, 25),
+          accent: lightenHex(hex, 75),
+          glow: hex,
+          shadow: 'rgba(0,0,0,0.3)',
+          contrast: getContrastYIQ(hex)
+        };
+        document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+        document.getElementById('customColorCircle').style.background = hex;
+        document.getElementById('customColorText').innerText = hex.toUpperCase();
+        renderAll();
+      };
+    }
+
+    function renderAll() {
+      if (currentView === 'gallery') {
+        renderGallery();
+      } else {
+        renderMatrix();
+      }
+    }
+
+    function renderGallery() {
+      const container = document.getElementById('galleryView');
+      container.innerHTML = '';
+
+      const filteredStyles = activeStyle === 'all' 
+        ? STYLES 
+        : STYLES.filter(s => s.id === activeStyle);
+
+      filteredStyles.forEach(style => {
+        // Filter badges
+        let badgeKeys = Object.keys(BADGES);
+        if (activeBadge !== 'all') {
+          badgeKeys = badgeKeys.filter(k => k === activeBadge);
+        }
+
+        if (searchQuery) {
+          badgeKeys = badgeKeys.filter(k => {
+            const b = BADGES[k];
+            return b.name.toLowerCase().includes(searchQuery) ||
+                   b.category.toLowerCase().includes(searchQuery) ||
+                   style.name.toLowerCase().includes(searchQuery);
+          });
+        }
+
+        if (badgeKeys.length === 0) return;
+
+        const section = document.createElement('div');
+        section.className = 'style-section';
+
+        section.innerHTML = `
+          <div class="style-header">
+            <div class="style-title-group">
+              <span class="style-number">${style.id.split('-')[0]}</span>
+              <h2 class="style-title">${style.name}</h2>
+              <span class="style-desc">${style.subtitle}</span>
+            </div>
+            <div style="display:flex; gap:8px;">
+              <button class="pill-btn" style="background:rgba(2,132,199,0.2); border-color:#38bdf8; color:#fff;" onclick="exportStyleIcoPack('${style.id}')" title="Download all ${badgeKeys.length} Windows .ICO files">
+                🪟 Download All .ICO (${badgeKeys.length})
+              </button>
+              <button class="pill-btn" onclick="exportStylePack('${style.id}')" title="Download all ${badgeKeys.length} SVGs">
+                ⬇ SVG Pack
+              </button>
+            </div>
+          </div>
+          <div class="icon-grid" id="grid_${style.id}"></div>
+        `;
+
+        container.appendChild(section);
+        const grid = section.querySelector(`#grid_${style.id}`);
+
+        badgeKeys.forEach(bKey => {
+          const badge = BADGES[bKey];
+          const uid = `card_${style.id}_${bKey}_${Math.random().toString(36).substr(2, 6)}`;
+          const svgCode = style.generateSvg(bKey, activeColor, uid);
+
+          const card = document.createElement('div');
+          card.className = 'icon-card';
+          card.innerHTML = `
+            <div class="icon-preview-box">
+              ${svgCode}
+            </div>
+            <div class="icon-name">${badge.name}</div>
+            <div class="icon-category">${style.name.split(' ')[0]} • ${badge.category}</div>
+            
+            <div class="card-actions-primary">
+              <button class="action-ico-btn" onclick="downloadIcoFile('${style.id}_folder-${bKey}.ico', '${escapeSvg(svgCode)}')">
+                <span>🪟</span> Download Windows .ICO
+              </button>
+            </div>
+            
+            <div class="card-actions">
+              <button class="action-btn" onclick="downloadPngFile('${style.id}_folder-${bKey}.png', '${escapeSvg(svgCode)}')">
+                <span>🖼</span> PNG
+              </button>
+              <button class="action-btn" onclick="downloadSvgFile('${style.id}_folder-${bKey}.svg', '${escapeSvg(svgCode)}')">
+                <span>⬇</span> SVG
+              </button>
+              <button class="action-btn" onclick="copySvgCode('${escapeSvg(svgCode)}')">
+                <span>📋</span> Copy
+              </button>
+            </div>
+          `;
+
+          const svgElem = card.querySelector('svg');
+          svgElem.style.width = iconSize + 'px';
+          svgElem.style.height = iconSize + 'px';
+
+          grid.appendChild(card);
+        });
+      });
+    }
+
+    function renderMatrix() {
+      const table = document.getElementById('matrixTable');
+      let badgeKeys = Object.keys(BADGES);
+      if (activeBadge !== 'all') {
+        badgeKeys = badgeKeys.filter(k => k === activeBadge);
+      }
+      if (searchQuery) {
+        badgeKeys = badgeKeys.filter(k => BADGES[k].name.toLowerCase().includes(searchQuery));
+      }
+
+      let headerHtml = `<tr><th style="text-align:left;">Icon Badge</th>`;
+      STYLES.forEach(s => {
+        headerHtml += `<th>${s.name}</th>`;
+      });
+      headerHtml += `</tr>`;
+
+      let rowsHtml = '';
+      badgeKeys.forEach(bKey => {
+        const badge = BADGES[bKey];
+        rowsHtml += `<tr><td class="matrix-row-title">${badge.name}</td>`;
+        STYLES.forEach(style => {
+          const uid = `mat_${style.id}_${bKey}_${Math.random().toString(36).substr(2, 5)}`;
+          const svg = style.generateSvg(bKey, activeColor, uid);
+          rowsHtml += `
+            <td>
+              <div class="matrix-icon-cell" onclick="copySvgCode('${escapeSvg(svg)}')">
+                ${svg}
+              </div>
+            </td>
+          `;
+        });
+        rowsHtml += `</tr>`;
+      });
+
+      table.innerHTML = headerHtml + rowsHtml;
+    }
+
+    function switchView(view) {
+      currentView = view;
+      document.getElementById('tabGallery').classList.toggle('active', view === 'gallery');
+      document.getElementById('tabMatrix').classList.toggle('active', view === 'matrix');
+      document.getElementById('galleryView').style.display = view === 'gallery' ? 'block' : 'none';
+      document.getElementById('matrixView').style.display = view === 'matrix' ? 'block' : 'none';
+      renderAll();
+    }
+
+    // Actions
+    function escapeSvg(str) {
+      return encodeURIComponent(str);
+    }
+
+    function copySvgCode(encodedSvg) {
+      const svg = decodeURIComponent(encodedSvg);
+      navigator.clipboard.writeText(svg).then(() => {
+        showToast('SVG copied to clipboard!');
+      });
+    }
+
+    function downloadSvgFile(filename, encodedSvg) {
+      const svg = decodeURIComponent(encodedSvg);
+      const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast(`Downloaded ${filename}`);
+    }
+
+    function downloadPngFile(filename, encodedSvg) {
+      const svg = decodeURIComponent(encodedSvg);
+      const canvas = document.createElement('canvas');
+      canvas.width = 512;
+      canvas.height = 512;
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      const svgBlob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(svgBlob);
+
+      img.onload = () => {
+        ctx.clearRect(0, 0, 512, 512);
+        ctx.drawImage(img, 0, 0, 512, 512);
+        canvas.toBlob(blob => {
+          const pngUrl = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = pngUrl;
+          a.download = filename;
+          a.click();
+          URL.revokeObjectURL(pngUrl);
+          URL.revokeObjectURL(url);
+          showToast(`Rasterized & Downloaded 512px PNG!`);
+        });
+      };
+      img.src = url;
+    }
+
+    // Windows Native .ICO Multi-Resolution Generator
+    async function svgToIcoBlob(svgString, sizes = [256, 128, 64, 48, 32, 16]) {
+      const svgBlob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(svgBlob);
+      const img = new Image();
+      await new Promise((resolve, reject) => {
+        img.onload = resolve;
+        img.onerror = reject;
+        img.src = url;
+      });
+
+      const pngBuffers = [];
+      for (const size of sizes) {
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext('2d');
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        ctx.clearRect(0, 0, size, size);
+        ctx.drawImage(img, 0, 0, size, size);
+
+        const buf = await new Promise(res => {
+          canvas.toBlob(blob => {
+            blob.arrayBuffer().then(res);
+          }, 'image/png');
+        });
+
+        pngBuffers.push({
+          size: size,
+          data: new Uint8Array(buf)
+        });
+      }
+      URL.revokeObjectURL(url);
+
+      const numImages = pngBuffers.length;
+      const headerSize = 6;
+      const dirEntrySize = 16;
+      const totalHeaderSize = headerSize + (dirEntrySize * numImages);
+
+      let totalFileSize = totalHeaderSize;
+      for (const p of pngBuffers) {
+        totalFileSize += p.data.length;
+      }
+
+      const icoBuffer = new ArrayBuffer(totalFileSize);
+      const view = new DataView(icoBuffer);
+
+      // ICONDIR
+      view.setUint16(0, 0, true);       // Reserved
+      view.setUint16(2, 1, true);       // Type 1 = ICO
+      view.setUint16(4, numImages, true); // Count
+
+      let currentOffset = totalHeaderSize;
+      for (let i = 0; i < numImages; i++) {
+        const item = pngBuffers[i];
+        const entryOffset = headerSize + (i * dirEntrySize);
+
+        view.setUint8(entryOffset + 0, item.size === 256 ? 0 : item.size);
+        view.setUint8(entryOffset + 1, item.size === 256 ? 0 : item.size);
+        view.setUint8(entryOffset + 2, 0); // Palette count
+        view.setUint8(entryOffset + 3, 0); // Reserved
+        view.setUint16(entryOffset + 4, 1, true);  // Color planes
+        view.setUint16(entryOffset + 6, 32, true); // Bit count (32bpp)
+        view.setUint32(entryOffset + 8, item.data.length, true); // Bytes in res
+        view.setUint32(entryOffset + 12, currentOffset, true);   // Offset
+
+        const dest = new Uint8Array(icoBuffer, currentOffset, item.data.length);
+        dest.set(item.data);
+        currentOffset += item.data.length;
+      }
+
+      return new Blob([icoBuffer], { type: 'image/x-icon' });
+    }
+
+    async function downloadIcoFile(filename, encodedSvg) {
+      const svg = decodeURIComponent(encodedSvg);
+      showToast('Generating Windows .ICO (6 resolutions)...');
+      try {
+        const icoBlob = await svgToIcoBlob(svg);
+        const url = URL.createObjectURL(icoBlob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast(`✓ Downloaded ${filename} — Ready for Windows!`);
+      } catch (err) {
+        console.error('Error generating ICO:', err);
+        showToast('Error generating ICO file.');
+      }
+    }
+
+    function exportStyleIcoPack(styleId) {
+      const style = STYLES.find(s => s.id === styleId);
+      if (!style) return;
+      showToast(`Generating all Windows .ICO icons for ${style.name}...`);
+      Object.keys(BADGES).forEach((bKey, idx) => {
+        setTimeout(async () => {
+          const svg = style.generateSvg(bKey, activeColor, `exp_${styleId}_${bKey}`);
+          await downloadIcoFile(`${styleId}_folder-${bKey}.ico`, escapeSvg(svg));
+        }, idx * 220);
+      });
+    }
+
+    function exportStylePack(styleId) {
+      const style = STYLES.find(s => s.id === styleId);
+      if (!style) return;
+      Object.keys(BADGES).forEach((bKey, idx) => {
+        setTimeout(() => {
+          const svg = style.generateSvg(bKey, activeColor, `exp_${styleId}_${bKey}`);
+          downloadSvgFile(`${styleId}_folder-${bKey}.svg`, escapeSvg(svg));
+        }, idx * 120);
+      });
+      showToast(`Exporting all 12 icons for ${style.name}...`);
+    }
+
+    // Modal
+    function openGuideModal() {
+      document.getElementById('guideModal').classList.add('active');
+    }
+    function closeGuideModal() {
+      document.getElementById('guideModal').classList.remove('active');
+    }
+
+    // Toast
+    let toastTimeout;
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMsg').innerText = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2400);
+    }
+
+    // Color utility helpers
+    function lightenHex(hex, percent) {
+      const num = parseInt(hex.replace('#', ''), 16);
+      const amt = Math.round(2.55 * percent);
+      const R = (num >> 16) + amt;
+      const G = (num >> 8 & 0x00FF) + amt;
+      const B = (num & 0x0000FF) + amt;
+      return '#' + (0x1000000 + (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 + (G < 255 ? G < 1 ? 0 : G : 255) * 0x100 + (B < 255 ? B < 1 ? 0 : B : 255)).toString(16).slice(1);
+    }
+
+    function darkenHex(hex, percent) {
+      const num = parseInt(hex.replace('#', ''), 16);
+      const amt = Math.round(2.55 * percent);
+      const R = (num >> 16) - amt;
+      const G = (num >> 8 & 0x00FF) - amt;
+      const B = (num & 0x0000FF) - amt;
+      return '#' + (0x1000000 + (R > 0 ? R : 0) * 0x10000 + (G > 0 ? G : 0) * 0x100 + (B > 0 ? B : 0)).toString(16).slice(1);
+    }
+
+    function getContrastYIQ(hexcolor){
+      hexcolor = hexcolor.replace('#', '');
+      const r = parseInt(hexcolor.substr(0,2),16);
+      const g = parseInt(hexcolor.substr(2,2),16);
+      const b = parseInt(hexcolor.substr(4,2),16);
+      const yiq = ((r*299)+(g*587)+(b*114))/1000;
+      return (yiq >= 150) ? '#0f172a' : '#ffffff';
+    }
+
+    window.onload = init;
+  </script>
+</body>
+</html>
